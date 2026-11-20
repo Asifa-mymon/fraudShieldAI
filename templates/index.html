@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraudShield AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">🛡️</div>
+                <div>
+                    <h2>FraudShield AI</h2>
+                    <p>Fraud Detection System</p>
+                </div>
+            </div>
+
+            <div class="nav-title">MAIN MENU</div>
+
+            <nav>
+                <button class="nav-link active" data-page="dashboard">▦ Dashboard</button>
+                <button class="nav-link" data-page="analysis">⌕ Transaction Analysis</button>
+                <button class="nav-link" data-page="performance">▤ Model Performance</button>
+                <button class="nav-link" data-page="about">ⓘ About Project</button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <span class="status-dot"></span>
+                Machine Learning Model Active
+                <small>Random Forest Classifier</small>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1 id="page-heading">Dashboard</h1>
+                    <p>Intelligent Financial Transaction Monitoring</p>
+                </div>
+
+                <div class="top-status">
+                    <span class="status-dot"></span>
+                    System Online
+                </div>
+            </header>
+
+
+            <!-- DASHBOARD PAGE -->
+            <section id="dashboard" class="page active">
+
+                <div class="welcome">
+                    <h2>Welcome to FraudShield AI</h2>
+                    <p>Monitor transactions and identify suspicious financial activities.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Total Transactions</span>
+                        <h2 id="total-transactions">Loading...</h2>
+                        <small>Dataset Records</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Fraud Transactions</span>
+                        <h2 id="fraud-transactions">Loading...</h2>
+                        <small>Detected Fraud Records</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Normal Transactions</span>
+                        <h2 id="normal-transactions">Loading...</h2>
+                        <small>Normal Records</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Fraud Rate</span>
+                        <h2 id="fraud-rate">Loading...</h2>
+                        <small>Dataset Fraud Percentage</small>
+                    </div>
+
+                </div>
+
+                <div class="content-card">
+                    <h3>Recent Transactions</h3>
+                    <p>Use Transaction Analysis to check a new transaction.</p>
+                    <button class="primary-btn" onclick="showPage('analysis')">
+                        Analyze Transaction
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- TRANSACTION ANALYSIS PAGE -->
+            <section id="analysis" class="page">
+
+                <div class="content-card">
+
+                    <h2>Transaction Risk Analysis</h2>
+                    <p>Enter transaction details to detect possible fraudulent activity.</p>
+
+                    <form id="transaction-form">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Transaction Amount (PKR)</label>
+                                <input type="number" id="amount" min="0" step="0.01" value="5000" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Transaction Hour (0–23)</label>
+                                <input type="number" id="hour" min="0" max="23" value="12" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>International Transaction</label>
+                                <select id="international">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Location Mismatch</label>
+                                <select id="location_mismatch">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Card Present</label>
+                                <select id="card_present">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Transactions in Last 24 Hours</label>
+                                <input type="number" id="transactions_last_24h" min="0" value="3" required>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="primary-btn" id="analyze-btn">
+                            Analyze Transaction
+                        </button>
+
+                    </form>
+
+                    <div id="result" class="result-box" hidden></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MODEL PERFORMANCE PAGE -->
+            <section id="performance" class="page">
+
+                <div class="content-card">
+                    <h2>Model Performance</h2>
+
+                    <div class="info-box">
+                        <h3>Random Forest Classifier</h3>
+                        <p>Active Machine Learning Algorithm</p>
+                    </div>
+
+                    <p>
+                        The model is trained to identify suspicious
+                        financial transaction patterns.
+                    </p>
+
+                    <p>Detailed evaluation and model comparison are available in the project files.</p>
+                </div>
+
+            </section>
+
+
+            <!-- ABOUT PROJECT PAGE -->
+            <section id="about" class="page">
+
+                <div class="content-card">
+                    <h2>About FraudShield AI</h2>
+
+                    <p>
+                        FraudShield AI is a machine learning-based
+                        financial transaction fraud detection and
+                        risk analysis system.
+                    </p>
+
+                    <h3>Project Features</h3>
+
+                    <ul>
+                        <li>Fraudulent transaction detection</li>
+                        <li>Transaction risk scoring</li>
+                        <li>Suspicious pattern identification</li>
+                        <li>Fraud probability prediction</li>
+                        <li>Interactive dashboard</li>
+                    </ul>
+
+                    <h3>Technologies Used</h3>
+
+                    <p>Python, Flask, HTML, CSS, JavaScript, Pandas and Scikit-learn.</p>
+
+                    <p class="note">
+                        Dataset: Generated demonstration data, not actual bank records.
+                    </p>
+                </div>
+
+            </section>
+
+            <footer>
+                FraudShield AI | Intelligent Fraud Detection System
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
